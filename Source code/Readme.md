@@ -4,6 +4,7 @@
 
 get_data.py: Constructs the synthetic data and retrieves ADNI and SEER  
 get_data_mimic.py: Retrieves MIMIC-III data  
+MIMIC-III feature extraction (directory): code for extracting features from MIMIC-III (includes FIDDLE code)  
 
 preprocess.py: Splits the synthetic, ADNI, and SEER data into a training/test/validation set   
 preprocess_mimic.py: Splits the MIMIC-III data into a training/test/validation set   
