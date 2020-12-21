@@ -1,0 +1,17 @@
+# Location of input files
+mimic3_path: '' #path where mimic data is stored 
+data_path: '' #path to save to
+
+# Customize table headers
+column_names:
+    ID: ID
+    t: t
+    var_name: variable_name
+    var_value: variable_value
+
+value_types:
+    # enter the feature type that you would like to override in the following format:
+    lump: Categorical
+    MedA:
+        AMOUNT: Numeric
+        ROUTE: Categorical
