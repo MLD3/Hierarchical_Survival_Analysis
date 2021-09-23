@@ -96,4 +96,5 @@ map patients to visits, creates the pat_vis_map file used by the split function 
 #uncomment to generate a mapping from hospital visit id to patient id
 pat_map = examples[['SUBJECT_ID', 'ICUSTAY_ID']]
 print(np.unique(np.unique(np.array(pat_map['SUBJECT_ID']), return_counts=True)[1], return_counts=True))
-pat_map.to_csv(data_path + 'labels/pat_to_visit.csv', index=False)
+pat_map.to_csv(data_path + 'pat_to_visit.csv', index=False)
+pat_map['SUBJECT_ID'].to_csv(data_path + 'pop.csv', index=False)
