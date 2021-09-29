@@ -36,7 +36,6 @@ theta_2 = args.theta_2
 theta_freq = args.theta_freq
 stats_functions = args.stats_functions
 
-#global df_population
 df_population = pd.read_csv(population).rename(columns={'ICUSTAY_ID': 'ID'}).set_index('ID')
 N = len(df_population)
 L = int(np.floor(T/dt))
