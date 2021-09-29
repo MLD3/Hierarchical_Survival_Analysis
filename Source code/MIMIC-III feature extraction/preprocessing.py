@@ -5,6 +5,7 @@ FIDDLE Preprocessing steps
 3. Post-filter
 """
 # from __main__ import *
+from run_fiddle import *
 from feature_helper import *
 import time
 
@@ -210,9 +211,9 @@ def map_time_invariant_features(df, bin_numeric=True):
     
     time_invariant_features = features_mixed
     assert time_invariant_features.astype(int).dtypes.nunique() == 1
-    sdf = time_invariant_features.astype(int).to_sparse(fill_value=0)
+    sdf = time_invariant_features.astype(pd.SparseDtype("int", fill_value=0))#int).to_sparse(fill_value=0)
     feature_names_all = time_invariant_features.columns.values
-    s_ = sparse.COO(sdf.to_coo())
+    s_ = sparse.COO(sdf.sparse.to_coo())#to_coo())
     
     print()
     print('Output')
@@ -416,12 +417,12 @@ def map_time_series_features(df_time_series, dtypes):
 
     print('    Binning numeric variables by quintile...')
     print('    Converting variables to binary features')
-    if parallel:
-        out = Parallel(n_jobs=n_jobs, verbose=10)( # Need to share global variables
-            delayed(smart_qcut_dummify)(col_data, q=5) for col_data in ts_mixed_cols
-        )
-    else:
-        out = [smart_qcut_dummify(col_data, q=5) for col_data in tqdm(ts_mixed_cols)]
+    #if parallel:
+    #    out = Parallel(n_jobs=n_jobs, verbose=10)( # Need to share global variables
+    #        delayed(smart_qcut_dummify)(col_data, q=5) for col_data in ts_mixed_cols
+    #    )
+    #else:
+    out = [smart_qcut_dummify(col_data, q=5) for col_data in tqdm(ts_mixed_cols)]
 
     if False:
         # ts_mixed_cut = ts_mixed.progress_apply(smart_qcut, q=5)
@@ -491,4 +492,3 @@ def post_filter_time_series(X_all, feature_names_all, threshold):
     print('X: shape={}, density={:.3f}'.format(X.shape, X.density))
     
     return X, feature_names, feature_aliases
-
