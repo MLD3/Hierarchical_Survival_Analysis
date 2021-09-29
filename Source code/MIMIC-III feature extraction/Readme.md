@@ -1,12 +1,10 @@
 # MIMIC-III Feature Extraction and Label Generation
-The original FIDDLE code can be found here: https://gitlab.eecs.umich.edu/mld3/FIDDLE, and the original MIMIC-III extraction code can be found here: https://github.com/MLD3/FIDDLE-experiments.
 
-The files used for this paper are included here for convenience.
+We used FIDDLE to extract features from the MIMIC-III dataset. The most up to date version can be found here: https://gitlab.eecs.umich.edu/mld3/FIDDLE. The original MIMIC-III extraction code can be found here: https://github.com/MLD3/FIDDLE-experiments.
+
+The version used for this paper is not the most up do date version, but is included here for convenience.
 
 ## To Use FIDDLE
 
-1. Run extract_data.py
-2. Generate the labels by running generate_labels.py
-3. Change the following files: config.yaml, get_population.py 
-   (fill in the variables whose values are empty strings according to the instruction next to it)
-4. To run the pipeline: python make_features.py --data_path [data_path from config.yaml] --population [where file with population ids is stored] --T 5 --dt 0.5 
+1. Change the following files: config.yaml
+2. Run the file run_fiddle.py. It has no required arguments.
