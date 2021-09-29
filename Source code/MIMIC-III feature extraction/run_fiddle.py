@@ -12,6 +12,9 @@ import argparse
 import pandas as pd
 import numpy as np
 
+extract_data.main()
+generate_labels.main()
+
 data_path = yaml.full_load(open('config.yaml'))['data_path']
 parser = argparse.ArgumentParser(description='')
 parser.add_argument('--data_path', type=str, default=data_path)
@@ -40,9 +43,7 @@ df_population = pd.read_csv(population).rename(columns={'ICUSTAY_ID': 'ID'}).set
 N = len(df_population)
 L = int(np.floor(T/dt))
 
+prepare_input.main(20, 0.5)
 
 if __name__ == '__main__':
-    extract_data.main()
-    generate_labels.main()
-    prepare_input.main(20, 0.5)
     make_features.main(args)
