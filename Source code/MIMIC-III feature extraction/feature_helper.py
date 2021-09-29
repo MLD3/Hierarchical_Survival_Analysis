@@ -17,6 +17,8 @@ def print_header(*content, char='='):
     print(*content)
     print(char * 80, flush=True)
 
+from run_fiddle import *
+
 ######
 # Post-filter: feature selection classes
 ######
@@ -45,7 +47,7 @@ def print_header(*content, char='='):
 # 
 class FrequencyThreshold_temporal(
     sklearn.base.BaseEstimator,
-    sklearn.feature_selection.base.SelectorMixin
+    sklearn.feature_selection.SelectorMixin#sklearn.feature_selection.base.SelectorMixin
 ):
     def __init__(self, threshold=0., L=None):
         assert L is not None
@@ -78,7 +80,7 @@ class FrequencyThreshold_temporal(
 # Keep only first feature in a pairwise perfectly correlated feature group
 class CorrelationSelector(
     sklearn.base.BaseEstimator,
-    sklearn.feature_selection.base.SelectorMixin,
+    sklearn.feature_selection.SelectorMixin,#sklearn.feature_selection.base.SelectorMixin,
 ):
     def __init__(self):
         super().__init__()
@@ -190,6 +192,8 @@ def smart_qcut(x, q):
     return x
 
 def make_float(v):
+    if v is None:
+        v = np.nan
     try:
         return float(v)
     except ValueError:
@@ -322,4 +326,3 @@ def check_imputed_output(df_v):
         assert pd.isnull(x[:(last_null_idx+1)]).all() # all values up to here are nan
         assert (~pd.isnull(x[(last_null_idx+1):])).all() # all values after here are not nan
     return
-
