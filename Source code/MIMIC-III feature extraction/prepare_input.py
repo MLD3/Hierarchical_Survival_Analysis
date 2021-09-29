@@ -11,8 +11,8 @@ from config import parallel, data_path, ID_col, t_col, var_col, val_col
 
 import extract_data
 
-def main():
-    parser = argparse.ArgumentParser(description='')
+def main(T, dt):
+    '''parser = argparse.ArgumentParser(description='')
     #parser.add_argument('--outcome', type=str, required=True)
     parser.add_argument('--T', type=float, required=True)
     parser.add_argument('--dt', type=float, required=True)
@@ -20,7 +20,7 @@ def main():
 
     #outcome = args.outcome
     T = args.T
-    dt = args.dt
+    dt = args.dt'''
     
     #print('Preparing pipeline input for: outcome={}, T={}, dt={}'.format(outcome, T, dt))
     print('Preparing pipeline input for: T={}, dt={}'.format(T, dt))
@@ -258,4 +258,3 @@ def resolve_duplicates_continuous(data):
 
 if __name__ == '__main__':
     main()
-
