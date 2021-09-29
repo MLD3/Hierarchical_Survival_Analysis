@@ -6,5 +6,5 @@ The version used for this paper is not the most up do date version, but is inclu
 
 ## To Use FIDDLE
 
-1. Change the following files: config.yaml
+1. Change the file config.yaml by replacing the empty strings with the instructions next to them.
 2. Run the file run_fiddle.py. It has no required arguments.
